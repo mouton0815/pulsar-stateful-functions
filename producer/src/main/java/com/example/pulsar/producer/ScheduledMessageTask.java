@@ -1,11 +1,11 @@
 package com.example.pulsar.producer;
 
 import com.mercateo.pulsar.types.Message;
-import io.github.majusko.pulsar.producer.PulsarTemplate;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.pulsar.core.PulsarTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
