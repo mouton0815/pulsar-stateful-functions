@@ -1,4 +1,4 @@
-package com.mercateo.pulsar.consumer;
+package com.example.pulsar.consumer;
 
 import com.mercateo.pulsar.types.Message;
 import com.mercateo.pulsar.types.MessageStats;

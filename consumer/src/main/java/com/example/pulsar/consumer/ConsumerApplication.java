@@ -1,4 +1,4 @@
-package com.mercateo.pulsar.consumer;
+package com.example.pulsar.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
