@@ -41,6 +41,6 @@ public class ScheduledMessageTask {
         final int textId = ThreadLocalRandom.current().nextInt(0, TEXTS.length);
         final Message message = new Message(++messageCount, userId, TEXTS[textId]);
         producer.send("messages", message);
-        log.info("Created message {}", message);
+        log.info("Sent {}", message);
     }
 }

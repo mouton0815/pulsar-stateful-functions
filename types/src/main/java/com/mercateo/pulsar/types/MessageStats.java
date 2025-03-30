@@ -1,4 +1,4 @@
 package com.mercateo.pulsar.types;
 
-public record MessageStats(int userId, int messageCount, int lineCount) {
+public record MessageStats(int userId, long textCount, long lineCount) {
 }

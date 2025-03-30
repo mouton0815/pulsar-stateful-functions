@@ -13,11 +13,11 @@ public class ConsumerService {
 
     @PulsarListener(topics="messages")
     public void consumeMessages(Message msg) {
-        log.info("-----> {}", msg);
+        log.info("{}", msg);
     }
 
     @PulsarListener(topics="message-stats")
     public void consumeMessageStats(MessageStats stats) {
-        log.info("-----> {}", stats);
+        log.info("{}", stats);
     }
 }
