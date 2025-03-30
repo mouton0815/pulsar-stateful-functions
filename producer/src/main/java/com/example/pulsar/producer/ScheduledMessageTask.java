@@ -36,7 +36,7 @@ public class ScheduledMessageTask {
     }
 
     @Scheduled(fixedRate = 3000, initialDelay = 2000)
-    public void sendOrder() throws PulsarClientException {
+    public void sendMessage() throws PulsarClientException {
         final int userId = ThreadLocalRandom.current().nextInt(1, 4);
         final int textId = ThreadLocalRandom.current().nextInt(0, TEXTS.length);
         final Message message = new Message(++messageCount, userId, TEXTS[textId]);

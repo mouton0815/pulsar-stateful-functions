@@ -17,8 +17,8 @@
     <modules>
         <module>types</module>
         <module>producer</module>
-        <!--module>consumer</module>
-        <module>function</module-->
+        <module>consumer</module>
+        <!--module>function</module-->
     </modules>
 
 </project>
