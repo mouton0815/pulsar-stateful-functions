@@ -1,0 +1,8 @@
+tenant: "public"
+namespace: "default"
+name: "MessageFunction"
+className: "com.example.pulsar.function.MessageFunction"
+inputs: ["messages"]
+output: "message-stats"
+autoAck: true
+parallelism: 1
