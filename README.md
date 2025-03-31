@@ -20,7 +20,7 @@ The project consists of three applications:
 
 # Building
 ```shell
-mvn clean package
+mvn clean install
 ```
 
 # Pulsar Setup
