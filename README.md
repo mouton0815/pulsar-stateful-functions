@@ -41,7 +41,7 @@ bin/pulsar-admin functions localrun \
   --function-config-file $PD/function/function-config.yml \
   --stateStorageServiceUrl bk://127.0.0.1:4181
 ```
-Where `$PD` is the path of this project.
+where `$PD` is the path of this project ([pulsar-stateful-functions](.)).
 
 Yet in another shell tab, you can observe the function log:
 ```shell
