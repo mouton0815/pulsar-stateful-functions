@@ -15,6 +15,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ScheduledMessageTask {
     private static final Logger log = LoggerFactory.getLogger(ScheduledMessageTask.class);
 
+    private static final String[] USERS = {
+            "Anne",
+            "Fred",
+            "John"
+    };
+
     private static final String[] TEXTS = {
             "Lorem ipsum",
             "dolor sit amet",
@@ -37,9 +43,9 @@ public class ScheduledMessageTask {
 
     @Scheduled(fixedRate = 3000, initialDelay = 2000)
     public void sendMessage() throws PulsarClientException {
-        final int userId = ThreadLocalRandom.current().nextInt(1, 4);
-        final int textId = ThreadLocalRandom.current().nextInt(0, TEXTS.length);
-        final Message message = new Message(++messageCount, userId, TEXTS[textId]);
+        final var userId = ThreadLocalRandom.current().nextInt(0, USERS.length);
+        final var textId = ThreadLocalRandom.current().nextInt(0, TEXTS.length);
+        final var message = new Message(++messageCount, USERS[userId], TEXTS[textId]);
         producer.send("messages", message);
         log.info("Sent {}", message);
     }

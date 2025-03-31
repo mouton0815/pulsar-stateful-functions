@@ -8,7 +8,7 @@ The project consists of three applications:
 * a **function** to be deployed to Pulsar, which
     * consumes message JSON events from topic `messages`
     * transforms them to Java objects using Jackson,
-    * accumulates message data (textCount, wordCount) per userId,
+    * accumulates message data (#texts, #words) per userId,
     * stores the accumulated values in Pulsar's (better: BookKeeper's) persistent state store, and
     * outputs accumulated events as JSON messages to topic `message-stats`.
 * a **consumer**, which
@@ -22,24 +22,30 @@ The project consists of three applications:
 ```shell
 mvn clean package
 ```
-Remember the path of this project:
-```shell
-export PRJ=`pwd`
-```
 
 # Pulsar Setup
 You need a Pulsar 4.x installation on localhost, see https://pulsar.apache.org/docs/en/standalone/.
 
 ```shell
 cd <pulsar-installation>
-bin/pulsar standalone
+PULSAR_STANDALONE_USE_ZOOKEEPER=1 bin/pulsar standalone
 ```
-In another shell, deploy the Pulsar Function that has been just built and packaged:
+Note that without `PULSAR_STANDALONE_USE_ZOOKEEPER=1`, Pulsar starts a simplified standalone configuration,
+which does not enable the Bookkeeper table service, and therefore cannot store function state
+([PIP-117](https://github.com/apache/pulsar/issues/13302)).
+
+In another shell tab, deploy the Pulsar Function that has been just built and packaged:
 ```shell
 bin/pulsar-admin functions localrun \
-  --jar $PRJ/function/target/function-0.1.0-SNAPSHOT-jar-with-dependencies.jar \
-  --function-config-file $PRJ/function/function-config.yml \
+  --jar $PD/function/target/function-0.1.0-SNAPSHOT-jar-with-dependencies.jar \
+  --function-config-file $PD/function/function-config.yml \
   --stateStorageServiceUrl bk://127.0.0.1:4181
+```
+Where `$PD` is the path of this project.
+
+Yet in another shell tab, you can observe the function log:
+```shell
+tail -f logs/functions/public/default/MessageFunction/MessageFunction-0.log
 ```
 
 # Running
