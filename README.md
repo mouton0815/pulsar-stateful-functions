@@ -16,7 +16,7 @@ The project consists of three applications:
     * transforms them to Java objects using Jackson, and
     * outputs the received objects to the log.
 
-![Accumulate order totals from order events](pulsar-functions.png)
+![Accumulate totals from message events](pulsar-stateful-function.png)
 
 # Building
 ```shell
