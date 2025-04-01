@@ -21,7 +21,7 @@ public class MessageFunction implements Function<Message, MessageStats> {
             context.getLogger().info("Produce {}", stats);
             return stats;
         } catch (Exception e) {
-            e.printStackTrace();
+            context.getLogger().warn(e.getMessage());
             return null;
         }
     }
